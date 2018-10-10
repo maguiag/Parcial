@@ -21,7 +21,7 @@ int informe_clientesAcobrar(Cliente* array, int limiteClientes, Afiches* pBuffer
     int i;
     int retorno=-1;
 
-    int aCobrar;
+    int aCobrar=0;;
     if(array!=NULL && limiteClientes>0 && pBuffer!=NULL && limiteAfiches>0)
         {
         for(i=0;i<limiteClientes;i++)
