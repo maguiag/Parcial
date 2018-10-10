@@ -22,8 +22,10 @@ int informe_clientesAcobrar(Cliente* array, int limiteClientes, Afiches* pBuffer
     int aCobrar;
     if(array!=NULL && limiteClientes>0 && pBuffer!=NULL && limiteAfiches>0)
         {
-        for(i=0;i<limiteClientes;i++){
-            if(!pBuffer[i].isEmpty){
+        for(i=0;i<limiteClientes;i++)
+            {
+            if(!pBuffer[i].isEmpty)
+            {
                 printf("\nIdCLIENTE: %d",pBuffer[i].idCliente);
                 printf("\nNombre: %s",pBuffer[i].nombre);
                 printf("\nApellido: %s",pBuffer[i].apellido);

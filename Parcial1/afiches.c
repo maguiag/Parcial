@@ -94,7 +94,7 @@ int afiches_mostrarPorId(Afiches* array,int limite, int idAfiche)
     char auxArchivo[51];
     char auxZona[51];
 
-    if((limite > 0 && array != NULL) && (limiteC>0 && pBuffer !=NULL))
+    if((limite > 0 && array != NULL) && (limiteCliente>0 && pBuffer !=NULL))
     {
         i = buscarLugarLibre(array,limite);
         if(i >= 0)
@@ -429,23 +429,25 @@ int afiches_listado(Afiches* array,int limite)
                 printf("\nIdAfiche: %d",array[i].idAfiche);
                 printf("\nCantidad Afiches: %d",array[i].cantAfiches);
                 printf("\nNombreArchivo: %s",array[i].nombreArchivo);
-                switch (array[i].zona){
+                switch (array[i].zona)
+                {
                     case 1:
-                        printf("\tCABA");
+                        printf("\nCABA");
                         break;
                     case 2:
-                        printf("\tZona Sur");
+                        printf("\nZona oeste");
                         break;
                     case 3:
-                        printf("\tZona Oeste");
+                        printf("\nZona sur");
                     break;
                 }
-                switch (array[i].estado){
+                switch (array[i].estado)
+                {
                     case 1:
-                        printf("\tEstado: a pagar");
+                        printf("\nA pagar");
                         break;
                     case 0:
-                        printf("\tEstado: Cobrada");
+                        printf("\NCobrada");
                         break;
                 }
 
@@ -463,7 +465,7 @@ int afiches_listado(Afiches* array,int limite)
  *
  */
 
-int afiches_editar(Afiche* array,int id,int limite,int cantAfiches,int zona)
+int afiches_editar(Afiches* array,int id,int limite,int cantAfiches,int zona)
 {
     int i;
     int retorno=-1;
