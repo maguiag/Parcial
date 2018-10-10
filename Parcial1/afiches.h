@@ -24,6 +24,7 @@ int afiches_buscarPorIdAfiche(Afiches* array,int limite, int idAfiche);
 int afiches_cobrar(Afiches* arrayAfiches, int limiteAfiche, Cliente* pBuffer, int limiteCliente, int id, int *indice)
 int afiches_aCobrarByIdCliente(Afiches* array,int limite,int idCliente);
 int afiches_listado(Afiches* array,int limite);
+int afiches_cambiarEstado(Afiches* array, int limite);
 int afiches_editar(Afiches* array,int id,int limite,int cantAfiches,int zona);
 
 #endif // AFICHES_H_INCLUDED

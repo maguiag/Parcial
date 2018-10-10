@@ -15,7 +15,9 @@
  */
 
 int informe_clientesAcobrar(Cliente* array, int limiteClientes, Afiches* pBuffer, int limiteAfiches)
+
 {
+
     int i;
     int retorno=-1;
 

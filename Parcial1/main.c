@@ -61,6 +61,7 @@ int main()
             afiches_listado(afiches,VENTAS):
             getValidInt("\nIngrese IdCliente\n","Error",&auxId,0,999,2);
             afiches_cobrar(afiches,VENTAS,clientes,QTY, auxId, auxIndice);
+            afiches_cambiarEstado(afiches,VENTAS);
             break;
         case 7:
             informe_clientesAcobrar(clientes, QTY,afiches,ventas);

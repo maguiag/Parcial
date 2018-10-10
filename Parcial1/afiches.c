@@ -367,11 +367,16 @@ int afiches_cobrar(Afiches* arrayAfiches, int limiteAfiche, Cliente* pBuffer, in
 {
     int i,j;
     int retorno=-1;
-    if(arrayAfi!=NULL&&limiteAfiche>0&& pBuffer!= NULL && limiteCliente>0){
-        for(i=0;i<limiteAfiche;i++){
-            if(arrayAfi[i].id==id){
-                for(j=0;j<limiteCli;j++){
-                    if(arrayAfi[i].idCliente==pBuffer[i].idCliente&& !arrayAfi[i].isEmpty){
+    if(arrayAfi!=NULL&&limiteAfiche>0&& pBuffer!= NULL && limiteCliente>0)
+        {
+        for(i=0;i<limiteAfiche;i++)
+        {
+            if(arrayAfi[i].id==id)
+            {
+                for(j=0;j<limiteCli;j++)
+                {
+                    if(arrayAfi[i].idCliente==pBuffer[i].idCliente&& !arrayAfi[i].isEmpty)
+                    {
                         printf("\nIdCliente: %d",pBuffer[i].idCliente);
                         printf("\nNombre: %s",pBuffer[i].nombre);
                         printf("\nApellido: %s",pBuffer[i].apellido);
@@ -401,7 +406,8 @@ int afiches_aCobrarByIdCliente(Afiches* array,int limite,int idCliente)
     int i;
     int retorno=0;
     for(i=0;i<limite;i++){
-        if(array[i].idCliente==idCliente&& array[i].estado== 1 && !array[i].isEmpty){
+        if(array[i].idCliente==idCliente&& array[i].estado== 1 && !array[i].isEmpty)
+            {
             retorno++;
         }
     }
@@ -420,8 +426,10 @@ int afiches_listado(Afiches* array,int limite)
 {
     int i;
     int retorno=-1;
-    if(array!=NULL&&limite>0){
-        for(i=0;i<limite;i++){
+    if(array!=NULL&&limite>0)
+        {
+        for(i=0;i<limite;i++)
+        {
             if(array[i].isEmpty==0)
                 {
                 retorno=0;
@@ -429,6 +437,7 @@ int afiches_listado(Afiches* array,int limite)
                 printf("\nIdAfiche: %d",array[i].idAfiche);
                 printf("\nCantidad Afiches: %d",array[i].cantAfiches);
                 printf("\nNombreArchivo: %s",array[i].nombreArchivo);
+                printf("\nEStado (0  cobrada, 1 por cobrar): %s",array[i].estado);
                 switch (array[i].zona)
                 {
                     case 1:
@@ -441,21 +450,26 @@ int afiches_listado(Afiches* array,int limite)
                         printf("\nZona sur");
                     break;
                 }
-                switch (array[i].estado)
-                {
-                    case 1:
-                        printf("\nA pagar");
-                        break;
-                    case 0:
-                        printf("\NCobrada");
-                        break;
-                }
-
-            }
+                           }
         }
     }
     return retorno;
 }
+
+int afiches_cambiarEstado(Afiches* array, int limite)
+{
+    int i;
+    int retorno =-1;
+    if(array!=NULL && limite>0)
+    {
+        if(array[i].estado==1)
+        {
+           array[i].estado=0;
+           printf("EStado de la venta: Cobrada");
+        }
+    }
+}
+
 
 /** \brief editar afiches
  *
@@ -469,9 +483,12 @@ int afiches_editar(Afiches* array,int id,int limite,int cantAfiches,int zona)
 {
     int i;
     int retorno=-1;
-    if(array!=NULL && limite>0 && (zona<4&&zona>0)&& cantidaAfiches>0){
-        for (i=0;i<limite;i++){
-            if(array[i].id==id){
+    if(array!=NULL && limite>0 && (zona<4&&zona>0)&& cantidaAfiches>0)
+        {
+        for (i=0;i<limite;i++)
+        {
+            if(array[i].id==id)
+            {
                 array[i].cantAfiches=cantAfiches;
                 array[i].zona=zona;
                 retorno=0;
