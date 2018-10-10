@@ -406,7 +406,7 @@ int afiches_aCobrarByIdCliente(Afiches* array,int limite,int idCliente)
     int i;
     int retorno=0;
     for(i=0;i<limite;i++){
-        if(array[i].idCliente==idCliente&& array[i].estado== 1 && !array[i].isEmpty)
+        if(array[i].idCliente==idCliente&& array[i].estado==1 && !array[i].isEmpty)
             {
             retorno++;
         }
@@ -483,7 +483,7 @@ int afiches_editar(Afiches* array,int id,int limite,int cantAfiches,int zona)
 {
     int i;
     int retorno=-1;
-    if(array!=NULL && limite>0 && (zona<4&&zona>0)&& cantidaAfiches>0)
+    if(array!=NULL && limite>0 )
         {
         for (i=0;i<limite;i++)
         {

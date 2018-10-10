@@ -64,7 +64,7 @@ int main()
             afiches_cambiarEstado(afiches,VENTAS);
             break;
         case 7:
-            informe_clientesAcobrar(clientes, QTY,afiches,ventas);
+            informe_clientesAcobrar(clientes, QTY,afiches,VENTAS);
             break;
         }
     }while(menu !=8);

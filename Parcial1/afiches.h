@@ -15,6 +15,7 @@ typedef struct
 int afiches_init(Afiches* array,int limite);
 int afiches_mostrarPorId(Afiches* array,int limite, int idAfiches);
 int afiches_mostrarDebug(Afiches* array,int limite);
+
 int afiches_alta(Afiches* array,int limiteAfiches, Cliente* pBuffer, int limiteCliente);
 int afiches_baja(Afiches* array,int limite, int idAfiche);
 //int afiches_modificacion(Afiches* array,int limite, int idAfiche);

@@ -15,13 +15,12 @@
  */
 
 int informe_clientesAcobrar(Cliente* array, int limiteClientes, Afiches* pBuffer, int limiteAfiches)
-
 {
 
     int i;
     int retorno=-1;
 
-    int aCobrar=0;;
+    int afichesAcobrar=0;;
     if(array!=NULL && limiteClientes>0 && pBuffer!=NULL && limiteAfiches>0)
         {
         for(i=0;i<limiteClientes;i++)
@@ -32,7 +31,7 @@ int informe_clientesAcobrar(Cliente* array, int limiteClientes, Afiches* pBuffer
                 printf("\nNombre: %s",pBuffer[i].nombre);
                 printf("\nApellido: %s",pBuffer[i].apellido);
                 printf("\nCuit: %s",pBuffer[i].cuit);
-                aCobrar=afiches_aCobrarByIdCliente(Afiches,VENTAS,pBuffer[i].idCliente);
+                afichesAcobrar = afiches_aCobrarByIdCliente(Afiches,VENTAS,pBuffer[i].idCliente);
                 printf("\nVentas a cobrar: %d",aCobrar);
                 retorno=0;
             }
