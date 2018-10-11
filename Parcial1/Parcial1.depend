@@ -7,6 +7,8 @@
 	"cliente.h"
 	"utn.h"
 
+1539196094 "
+
 1539173114 c:\users\user\desktop\tp_laboratorio_1-\parcial1\cliente.h
 
 1539171043 c:\users\user\desktop\tp_laboratorio_1-\parcial1\utn.h
@@ -17,4 +19,25 @@
 	<time.h>
 	<string.h>
 	"utn.h"
+
+1539171043 
+
+1539171044 source:/home/alumno/Escritorio/Parcial1/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1539171044 /home/alumno/Escritorio/Parcial1/utn.h
+
+1539216855 source:/home/alumno/Escritorio/Parcial1/cliente.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+
+1539215779 /home/alumno/Escritorio/Parcial1/cliente.h
 

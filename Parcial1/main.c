@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
@@ -34,7 +34,7 @@ int main()
 
     do
     {
-        getValidInt("1.Alta\n2.Modificar cliente\n3.Baja cliente\n4.Vender\n5.Editar\n6.Cobrar\n7.Imprimir clientes\n8.Salir\n","\nError\n",&menu,1,8,1);
+        getValidInt("1.Alta\n2.Modificar cliente\n3.Baja cliente\n4.Vender\n5.Editar\n6.Cobrar\n7.Imprimir clientes\n8.Informar\n9.Salir\n","\nError\n",&menu,1,9,1);
         switch(menu)
         {
         case 1:
@@ -66,7 +66,14 @@ int main()
         case 7:
             informe_clientesAcobrar(clientes, QTY,afiches,VENTAS);
             break;
+            case 8:
+            getValidInt("1.Cl + ventas a cobrar\n2.Cl + ventas cobradas\n3.Cl + ventas\n4.Cl + afiches cobrar\n5.Cl + afiches\n6.zona - afiches\n7.cl-1000af\n8.af xzona\n9.venta x zona\n10.af prom Cl",)
+            switch
+            {
+
+            }
+            break;
         }
-    }while(menu !=8);
+    }while(menu !=9);
     return 0;
 }

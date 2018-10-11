@@ -1,12 +1,12 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
 #include "cliente.h"
 #include "utn.h"
 
-static int proximoId();
-static int buscarLugarLibre(Cliente* array,int limite);
+
+//static int buscarLugarLibre(Cliente* array,int limite);
 
 
 /** \brief Inicializa la estructura clientes
@@ -15,16 +15,17 @@ static int buscarLugarLibre(Cliente* array,int limite);
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_init(Cliente* array,int limite)
+
+int cliente_init(Cliente* arrayC,int limite)
 {
     int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         retorno = 0;
         for(i=0;i<limite;i++)
         {
-            array[i].isEmpty=1;
+            arrayC[i].isEmpty=1;
         }
     }
     return retorno;
@@ -37,16 +38,16 @@ int cliente_init(Cliente* array,int limite)
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_mostrarDebug(Cliente* array,int limite)
+int cliente_mostrarDebug(Cliente* arrayC,int limite)
 {
     int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         retorno = 0;
         for(i=0;i<limite;i++)
         {
-            printf("[DEBUG] - %d - %s - %d\n",array[i].idCliente, array[i].nombre, array[i].isEmpty);
+            printf("[DEBUG] - %d - %s - %d\n",arrayC[i].idCliente, arrayC[i].nombre, arrayC[i].isEmpty);
         }
     }
     return retorno;
@@ -60,17 +61,17 @@ int cliente_mostrarDebug(Cliente* array,int limite)
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_mostrarPorId(Cliente* array,int limite, int idCliente)
+int cliente_mostrarPorId(Cliente* arrayC,int limite, int idCliente)
 {
     int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         retorno = 0;
         for(i=0;i<limite;i++)
         {
-            if(!array[i].isEmpty && array[i].idCliente==idCliente)
-                printf("[RELEASE] -ID: %d -NOMBRE: %s -APELLIDO: %s -CUIT: %s\n",array[i].idCliente, array[i].nombre, array[i].apellido, array[i].cuit);
+            if(!arrayC[i].isEmpty && arrayC[i].idCliente==idCliente)
+                printf("[RELEASE] -ID: %d -NOMBRE: %s -APELLIDO: %s -CUIT: %s\n",arrayC[i].idCliente, arrayC[i].nombre, arrayC[i].apellido, arrayC[i].cuit);
         }
     }
     return retorno;
@@ -83,7 +84,7 @@ int cliente_mostrarPorId(Cliente* array,int limite, int idCliente)
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_alta(Cliente* array,int limite)
+int cliente_alta(Cliente* arrayC,int limite)
 {
     int retorno = -1;
     int i;
@@ -91,9 +92,9 @@ int cliente_alta(Cliente* array,int limite)
     char auxApellido[51];
     char auxCuit[12];
 
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
-        i = buscarLugarLibre(array,limite);
+        i = buscarLugarLibre(arrayC,limite);
         if(i >= 0)
         {
             if(!getValidString("\nIngrese nombre: ","\nNo es un nombre","El maximo es 50",auxNombre,50,2))
@@ -103,12 +104,12 @@ int cliente_alta(Cliente* array,int limite)
                     if(!getValidInt("\nIngrese CUIT: ","\nDebe tener solo numeros","El maximo es de 11",auxCuit,12,2))
                     {
                         retorno = 0;
-                        strcpy(array[i].nombre,auxNombre);
-                        strcpy(array[i].apellido,auxApellido);
-                        strcpy(array[i].cuit,auxCuit);
-                        array[i].idCliente = proximoId();
-                        array[i].isEmpty = 0;
-                        printf("El IdCliente es: %d\n",array[i].idCliente);
+                        strcpy(arrayC[i].nombre,auxNombre);
+                        strcpy(arrayC[i].apellido,auxApellido);
+                        strcpy(arrayC[i].cuit,auxCuit);
+                        arrayC[i].idCliente = proximoId();
+                        arrayC[i].isEmpty = 0;
+                        printf("El IdCliente es: %d\n",arrayC[i].idCliente);
                     }
                 }
             }
@@ -135,18 +136,18 @@ int cliente_alta(Cliente* array,int limite)
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_baja(Cliente* array,int limite, int idCliente)
+int cliente_baja(Cliente* arrayC,int limite, int idCliente)
 {
     int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         retorno = -2;
         for(i=0;i<limite;i++)
         {
-            if(!array[i].isEmpty && array[i].idCliente==idCliente)
+            if(!arrayC[i].isEmpty && arrayC[i].idCliente==idCliente)
             {
-                array[i].isEmpty = 1;
+                arrayC[i].isEmpty = 1;
                 retorno = 0;
                 break;
             }
@@ -163,19 +164,19 @@ int cliente_baja(Cliente* array,int limite, int idCliente)
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_modificacion(Cliente* array,int limite, int idCliente)
+int cliente_modificacion(Cliente* arrayC,int limite, int idCliente)
 {
     int retorno = -1;
     int i;
     char auxNombre[51];
     char auxApellido[51];
     char auxCuit[12];
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         retorno = -2;
         for(i=0;i<limite;i++)
         {
-            if(!array[i].isEmpty && array[i].idCliente==idCliente)
+            if(!arrayC[i].isEmpty && arrayC[i].idCliente==idCliente)
             {
                 if(!getValidString("\nIngrese nombre: ","\nNo es un nombre","El maximo es 50",auxNombre,50,2))
                 {
@@ -184,11 +185,11 @@ int cliente_modificacion(Cliente* array,int limite, int idCliente)
                         if(!getValidInt("\nIngrese CUIT: ","\nDebe tener solo numeros","El maximo es de 11",auxCuit,12,2))
                         {
                             retorno = 0;
-                            strcpy(array[i].nombre,auxNombre);
-                            strcpy(array[i].apellido,auxApellido);
-                            strcpy(array[i].cuit,auxCuit);
-                            array[i].idCliente = proximoId();
-                            array[i].isEmpty = 0;
+                            strcpy(arrayC[i].nombre,auxNombre);
+                            strcpy(arrayC[i].apellido,auxApellido);
+                            strcpy(arrayC[i].cuit,auxCuit);
+                            arrayC[i].idCliente = proximoId();
+                            arrayC[i].isEmpty = 0;
                         }
                     }
                 }
@@ -212,27 +213,27 @@ int cliente_modificacion(Cliente* array,int limite, int idCliente)
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_ordenar(Cliente* array,int limite, int orden)
+int cliente_ordenar(Cliente* arrayC,int limite, int orden)
 {
     int retorno = -1;
     int i;
     int flagSwap;
     Cliente auxiliarEstructura;
 
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         do
         {
             flagSwap = 0;
             for(i=0;i<limite-1;i++)
             {
-                if(!array[i].isEmpty && !array[i+1].isEmpty)
+                if(!arrayC[i].isEmpty && !arrayC[i+1].isEmpty)
                 {
-                    if((strcmp(array[i].nombre,array[i+1].nombre) > 0 && orden) || (strcmp(array[i].nombre,array[i+1].nombre) < 0 && !orden)) //******
+                    if((strcmp(arrayC[i].nombre,arrayC[i+1].nombre) > 0 && orden) || (strcmp(arrayC[i].nombre,arrayC[i+1].nombre) < 0 && !orden)) //******
                     {
-                        auxiliarEstructura = array[i];
-                        array[i] = array[i+1];
-                        array[i+1] = auxiliarEstructura;
+                        auxiliarEstructura = arrayC[i];
+                        arrayC[i] = arrayC[i+1];
+                        arrayC[i+1] = auxiliarEstructura;
                         flagSwap = 1;
                     }
                 }
@@ -249,15 +250,15 @@ int cliente_ordenar(Cliente* array,int limite, int orden)
  * \return int [0] OK [1] ERROR
  *
  */
-static int buscarLugarLibre(Cliente* array,int limite)
+/*static int buscarLugarLibre(Cliente* arrayC,int limite)
 {
     int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         for(i=0;i<limite;i++)
         {
-            if(array[i].isEmpty==1)
+            if(arrayC[i].isEmpty==1)
             {
                 retorno = i;
                 break;
@@ -267,7 +268,7 @@ static int buscarLugarLibre(Cliente* array,int limite)
     return retorno;
 }
 
-
+*/
 /** \brief Incremente el Id al ser llamada
  *
  * \return int retorna el valor correspondiente al proximoId
@@ -290,23 +291,23 @@ static int proximoId()
  * \return int [0] OK [1] ERROR
  *
  */
-int cliente_altaForzada(Cliente* array,int limite, char* nombre, char* apellido, char* cuit)
+int cliente_altaForzada(Cliente* arrayC,int limite, char* nombre, char* apellido, char* cuit)
 {
 
     int retorno = -1;
     int i;
 
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
-        i = buscarLugarLibre(array,limite);
+        i = buscarLugarLibre(arrayC,limite);
         if(i >= 0)
         {
             retorno = 0;
-            strcpy(array[i].nombre,nombre);
-            strcpy(array[i].apellido,apellido);
-            strcpy(array[i].cuit,cuit);
-            array[i].idCliente = proximoId();
-            array[i].isEmpty = 0;
+            strcpy(arrayC[i].nombre,nombre);
+            strcpy(arrayC[i].apellido,apellido);
+            strcpy(arrayC[i].cuit,cuit);
+            arrayC[i].idCliente = proximoId();
+            arrayC[i].isEmpty = 0;
         }
         retorno = 0;
     }
@@ -321,16 +322,16 @@ int cliente_altaForzada(Cliente* array,int limite, char* nombre, char* apellido,
  * \return int retorna un entero que corresponde a la posicion en la que se encuentra ese Id
  *
  */
-int cliente_buscarPorId(Cliente* array,int limite, int idCliente)
+int cliente_buscarPorId(Cliente* arrayC,int limite, int idCliente)
 {
     int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limite > 0 && arrayC != NULL)
     {
         retorno = -2;
         for(i=0;i<limite;i++)
         {
-            if(!array[i].isEmpty && array[i].idCliente==idCliente)
+            if(!arrayC[i].isEmpty && arrayC[i].idCliente==idCliente)
             {
                 retorno=i;
                 break;
@@ -339,3 +340,5 @@ int cliente_buscarPorId(Cliente* array,int limite, int idCliente)
     }
     return retorno;
 }
+
+
